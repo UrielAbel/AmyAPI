@@ -1,13 +1,9 @@
-const status = require('../src/health/routes');
-const users = require('../src/users/routes');
-// const validateAuth = require('../middlewares/validateAuth');
-// const getData = require('../middlewares/getData');
+const projects = require("../src/projects/routes")
+const main = require("../src/main/routes")
+const issues = require("../src/issues/routes")
 
 module.exports = (app) => {
-  app.use('/status', status);
-  app.use('/users', users);
-  // app.use('/users', validateAuth.checkIfAuthenticated, getData.getGeoip, users);
-  app.use('*', (req, res) => {
-    res.send('Not found!!!');
-  });
+  app.use('/', main)
+  app.use("/projects", projects)
+  app.use("/issues", issues)
 };
